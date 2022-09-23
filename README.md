@@ -1,2 +1,1 @@
-# costone-notes
-notes for costone
+# Docs for Side FSales Developer
