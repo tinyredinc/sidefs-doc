@@ -1,6 +1,6 @@
 * QC - QCloud 腾讯云
 * GC - Google Cloud 谷歌云
-* 服务器编码方式 - [供应商][地区][IP尾号] - [功能备注]
+* 服务器编码方式 - [供应商][地区][编码] - [功能备注]
 
 
 
@@ -22,11 +22,12 @@ IP1: 34.168.167.162
 IP2: 10.138.0.2
 ```
 
-GCUS003-DB
+GCUS666-DB
 ```
 SPECS: 2C/8G
 USAGE: MYSQL PRIMARY DATABASE
 IP1: 34.168.204.3
+MEMO: only accessibel via GCUS162
 ```
 
 GCUSXXX-WEB
