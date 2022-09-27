@@ -6,25 +6,37 @@ Server Information - [server-info.md](other/server-info.md)
 ADMIN PANEL API - [click for admin api docs](admin/)
 ```
 https://fs-admin-api.sideai.com
+104.197.121.190
+
 https://hk-fs-admin-api.sideai.com
+35.215.191.195
 ```
 
 PUBLIC API - [click for public api docs](public/)
 ```
 https://fs-pub-api.sideai.com
+104.197.121.190
+
 https://hk-fs-pub-api.sideai.com
+35.215.191.195
 ```
 
 PLATFORM API - [click for platform api docs](platform/)
 ```
 https://fs-plt-api.sideai.com
+104.197.121.190
+
 https://hk-fs-plt-api.sideai.com
+35.215.191.195
 ```
 
 MEGATEAM API - [click for megateam api docs](megateam/)
 ```
 https://fs-mt-api.sideai.com
+104.197.121.190
+
 https://hk-fs-mt-api.sideai.com
+35.215.191.195
 ```
 
 # ACESSS PORTAL
