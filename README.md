@@ -40,21 +40,35 @@ https://hk-fs-mt-api.sideai.com
 ```
 
 # ACESSS PORTAL
-```
+
 ADMIN PORTAL
+```
 https://mathe8p38jv0h0cp.sideai.com
+104.197.121.190
+```
 
 AGENT PORTAL
+```
 https://fs.sideai.com
+104.197.121.190
+```
 
 AGENT MOBILE PORTAL
+```
 https://fsm.sideai.com
+104.197.121.190
+```
 
 MEGATEAM PORTAL
+```
 https://mt.sideai.com
+104.197.121.190
+```
 
 MEGATEAM MOBILE PORTAL
+```
 https://mtm.sideai.com
+104.197.121.190
 ```
 
 
