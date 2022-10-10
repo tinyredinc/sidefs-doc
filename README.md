@@ -9,7 +9,7 @@ https://fs-admin-api.sideai.com
 104.197.121.190
 
 https://hk-fs-admin-api.sideai.com
-35.215.191.195
+101.32.185.122
 ```
 
 PUBLIC API - [click for public api docs](public/)
@@ -18,7 +18,7 @@ https://fs-pub-api.sideai.com
 104.197.121.190
 
 https://hk-fs-pub-api.sideai.com
-35.215.191.195
+101.32.185.122
 ```
 
 PLATFORM API - [click for platform api docs](platform/)
@@ -27,7 +27,7 @@ https://fs-plt-api.sideai.com
 104.197.121.190
 
 https://hk-fs-plt-api.sideai.com
-35.215.191.195
+101.32.185.122
 ```
 
 MEGATEAM API - [click for megateam api docs](megateam/)
@@ -36,7 +36,7 @@ https://fs-mt-api.sideai.com
 104.197.121.190
 
 https://hk-fs-mt-api.sideai.com
-35.215.191.195
+101.32.185.122
 ```
 
 # ACESSS PORTAL
