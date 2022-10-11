@@ -2,14 +2,14 @@
 * GC - Google Cloud 谷歌云
 * 服务器编码方式 - [供应商][地区][编码] - [功能备注]
 
-GCHK195-PROXY
+QCHK122-PROXY
 ```
-LOCATION: GC CN HK
+LOCATION: QC CN HK
 SPECS: 1C/2G
-USAGE: HK REVERSE PROXY OR TUNNEL FOR CN DEVS
+USAGE: HK PROXY/TUNNEL FOR CN DEVS
 OS: Ubuntu 22.04 LTS
-IP1: 35.215.191.195
-IP2: 10.170.0.2
+IP1: 101.32.185.122
+IP2: 172.19.19.15
 ```
 
 GCUS051-API
@@ -78,6 +78,8 @@ PING 34.168.167.162 (34.168.167.162) 56(84) bytes of data.
 ```
 
 ```
+
+
 [GC CA EAST] >> [GC CN HK]
 PING 35.215.191.195 (35.215.191.195) 56(84) bytes of data.
 64 bytes from 35.215.191.195: icmp_seq=1 ttl=61 time=217 ms
@@ -98,6 +100,13 @@ PING 35.215.191.195 (35.215.191.195) 56(84) bytes of data.
 64 bytes from 35.215.191.195: icmp_seq=2 ttl=50 time=190 ms
 64 bytes from 35.215.191.195: icmp_seq=3 ttl=50 time=190 ms
 64 bytes from 35.215.191.195: icmp_seq=4 ttl=50 time=190 ms
+
+[GC US CENTAL] >> [QC CN HK]
+PING 101.32.185.122 (101.32.185.122) 56(84) bytes of data.
+64 bytes from 101.32.185.122: icmp_seq=1 ttl=59 time=191 ms
+64 bytes from 101.32.185.122: icmp_seq=2 ttl=59 time=190 ms
+64 bytes from 101.32.185.122: icmp_seq=3 ttl=59 time=189 ms
+64 bytes from 101.32.185.122: icmp_seq=4 ttl=59 time=190 ms
 
 [GC US WEST] >> [GC CN HK]
 PING 35.215.191.195 (35.215.191.195) 56(84) bytes of data.

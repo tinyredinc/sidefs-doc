@@ -1,0 +1,27 @@
+version: "3"
+services:
+  v2ray:
+    restart: always
+    container_name: v2ray
+    image: v2fly/v2fly-core:v5.1.0
+    environment:
+      TZ: Asia/Shanghai
+      V2RAY_VMESS_AEAD_FORCED: false
+    ports:
+      - '10080-10089:10080-10089'
+    volumes:
+      - ./v2ray/server.config.json:/etc/v2ray/config.json:ro
+    command: ["v2ray", "run", "/etc/v2ray/config.json"]
+  nginx:
+    restart: always
+    container_name: nginx
+    image: nginx:1.23-alpine
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/cert:/var/cert
+      - ./nginx/data:/var/log/nginx
