@@ -1,6 +1,16 @@
 # Docs for Side FSales Developer
 
-Server Information - [server-info.md](other/server-info.md)
+## Public
+
+## Platorm
+
+## Megateam
+
+## Admin
+
+## Other
+* Server Information - [server-info.md](other/server-info.md)
+* API Specification - [api-specs.md](other/api-spec.md)
 
 # API ENDPOINT
 ADMIN PANEL API - [click for admin api docs](admin/)
