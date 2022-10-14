@@ -1,0 +1,43 @@
+version: "3"
+services:
+  php:
+    restart: always
+    container_name: sidefs-php
+    build: ./php
+    # image: php:8.1-fpm-alpine
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - "./app/config.php:/var/app/config.php"
+      - "F:\\App\\red\\sidefs-be:/var/app/backend"
+    working_dir: /var/app/backend
+    networks:
+      - app
+  nginx:
+    restart: always
+    container_name: sidefs-nginx
+    image: nginx:1.23-alpine
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/data:/var/log/nginx
+    networks:
+      - app
+  redis:
+    restart: always
+    container_name: sidefs-redis
+    image: redis:7.0-alpine
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - ./redis/data:/data
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    networks:
+      - app
+networks:
+  app:
+    driver: bridge
