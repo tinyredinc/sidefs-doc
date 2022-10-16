@@ -1,0 +1,161 @@
+## [authByPassword] - 密码登录
+
+- PARAMETER
+```
+account - required, string, 登录账号（电话或邮箱）. 
+password - required, string, , 登录密码. 
+expire_day - optional, int, 14, 密匙有效天数. 
+```
+
+- REQUEST EXAMPLE
+```
+POST /agent/auth/auth_by_password
+
+{
+  "account": "18681161386",
+  "password": "123456",
+  "expire_day": 14
+}
+```
+
+- RESPONSE EXAMPLE
+```
+{
+  "request_id": "7e761e808d0463fb29e2ea1988d88019",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1665916827,
+  "data": {
+    "auth_token": "rhddBZMTMyMDMQ51XeR0NyQjhlzM2cjYhR2M0QGNlDMwATM6k2OiQWaf1W7MDMwADMxoTa7ICZpNyEzN2YTMQ51XeRUfYlRnI6cjOztnOyoTYBTO0cjZ5UTYwkjMiB9FduV2ZhJiO4ozc7AMDY="
+  }
+}
+```
+
+
+## [loggedInfo] - 取登录者信息
+
+- PARAMETER
+```
+none
+```
+
+- REQUEST EXAMPLE
+```
+GET /agent/auth/logged_info
+Auth-Token: 6eqyL7uWNlVWZQ51XeREN5kTiNTNhJmYklDO3YzNmDMwATM6k2OiQWaf1W7MDMwADMxoTa7ICZpNyEzN2YTMQ51XeRUfYlRnI6cjOztnOyoTYBjZxUTY3QWOkBTN5Y9FduV2ZhJiO4ozc7AODk=
+```
+
+- RESPONSE EXAMPLE
+```
+{
+  "request_id": "8219ca389205b5eb84bd9bea5ae242cd",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1665917461,
+  "data": {
+    "id": 100003,
+    "active_yn": 1,
+    "team_id": 10000,
+    "agent_group_id": 1,
+    "cellphone": "18681161386",
+    "login_pass": "$2y$05$CZcqYipkhfcnWQ1w4u0HrOHXvlu3UZ1ZYqlGLThtFu1yPwo9GFm4O",
+    "work_name": "谭小文",
+    "agent_title": "销售",
+    "agent_role": 2,
+    "fuid_wx": "o7SOi54JJslbABb_MtDCE4hUAjOs",
+    "wechat_id": "",
+    "qq_number": "",
+    "visit_notice_mode": 0,
+    "boot_step_version": "2.0",
+    "email": "hi@idrunk.net",
+    "need_boot_step_yn": false,
+    "team_info": {
+      "id": 10000,
+      "active_yn": 1,
+      "system_name": "思得智能",
+      "system_logo": "https://cdn.sideai.com/sidefs/upload/10000/100002/c5e74a940b01876dd6e6e36aa6af6e65.png",
+      "team_fullname": "思得智能研发团队",
+      "team_nickname": "思得研发",
+      "team_intro": "思得智能研发团队",
+      "geolocation_id": 423,
+      "owner_cellphone": "15920089431",
+      "owner_fullname": "辛集芳",
+      "expire_dt": "2030-01-01 00:00:00",
+      "face_group_id": 100020,
+      "traffic_significant_time": 5,
+      "agent_limit": 99,
+      "team_class": "F",
+      "default_visit_notice_mode": 1,
+      "default_visit_notice_cooldown": 30,
+      "lead_budget_mode": 2,
+      "lead_remark_mode": 1,
+      "lead_vendor_mode": 1,
+      "lead_cellphone_mode": 1,
+      "lead_wechat_id_mode": 1,
+      "lead_id_name_mode": 0,
+      "lead_id_number_mode": 0,
+      "remind_follow_up_yn": 1,
+      "remind_sales_daily_yn": 1,
+      "remind_manager_daily_yn": 1,
+      "remind_manager_weekly_yn": 0,
+      "stage_id_deposite": 2,
+      "stage_id_full_payment": 3,
+      "days_to_expire": 2633,
+      "active_agents": 17
+    },
+    "owner_info": {
+      "id": 100228,
+      "active_yn": 1,
+      "team_id": 10000,
+      "agent_group_id": 31,
+      "cellphone": "15920089431",
+      "login_pass": null,
+      "work_name": "辛集芳",
+      "agent_title": "店长",
+      "agent_role": 9,
+      "fuid_wx": "o7SOi5zK3x6FA_i-HQggilbqd6D0",
+      "wechat_id": "carriexin",
+      "qq_number": "1146296644",
+      "visit_notice_mode": 0,
+      "boot_step_version": "2.0",
+      "email": null
+    },
+    "group_info": {
+      "id": 1,
+      "team_id": 0,
+      "group_name": "默认组",
+      "enable_yn": 1,
+      "create_dt": "2020-07-07 16:26:40"
+    },
+    "team_menu": [
+      {
+        "id": 23,
+        "team_id": 0,
+        "required_role": 1,
+        "menu_group": "宣发获客",
+        "group_order": 1000,
+        "menu_name": "landing_page",
+        "menu_text": "获客页面",
+        "menu_icon": "icon-landing-page",
+        "menu_href_pc": "/panel/landing-page",
+        "menu_href_mobile": "/landing-page/list.html",
+        "display_yn": 1,
+        "display_order": 5,
+        "create_dt": "2020-06-12 17:43:54"
+      },
+      ...
+    ],
+    "data_union": {
+      "id": 5000,
+      "union_name": "思得研发测试联盟",
+      "union_desc": "此数据联盟由思得智能产品研发团队建立，仅作为开发调试、功能演示等非商业生产类用途。",
+      "enable_yn": 1,
+      "owner_fullname": "张小红",
+      "owner_cellphone": "18127449025",
+      "expire_dt": "2030-12-08 20:50:57",
+      "create_dt": "2020-12-08 20:50:57",
+      "update_dt": "2020-12-08 20:51:06"
+    }
+  }
+}
+```
