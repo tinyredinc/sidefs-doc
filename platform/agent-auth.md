@@ -26,7 +26,7 @@ POST /agent/auth/auth_by_password
   "error_msg": "",
   "timestamp": 1665916827,
   "data": {
-    "auth_token": "rhddBZMTMyMDMQ51XeR0NyQjhlzM2cjYhR2M0QGNlDMwATM6k2OiQWaf1W7MDMwADMxoTa7ICZpNyEzN2YTMQ51XeRUfYlRnI6cjOztnOyoTYBTO0cjZ5UTYwkjMiB9FduV2ZhJiO4ozc7AMDY="
+    "auth_token": "rhdd="
   }
 }
 ```
@@ -42,7 +42,7 @@ none
 - REQUEST EXAMPLE
 ```
 GET /agent/auth/logged_info
-Auth-Token: 6eqyL7uWNlVWZQ51XeREN5kTiNTNhJmYklDO3YzNmDMwATM6k2OiQWaf1W7MDMwADMxoTa7ICZpNyEzN2YTMQ51XeRUfYlRnI6cjOztnOyoTYBjZxUTY3QWOkBTN5Y9FduV2ZhJiO4ozc7AODk=
+Auth-Token: 6eqyL7uWNl=
 ```
 
 - RESPONSE EXAMPLE

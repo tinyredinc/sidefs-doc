@@ -1,0 +1,364 @@
+## [agentList] - 取职工列表
+
+- PARAMETER
+```
+active_yn - optional, bool, , 是否筛选在职的. 
+is_just_admin - optional, bool, , 是否仅筛选管理员. 
+ext_agent_ids - optional, int, , 要排除筛选的职员ID. 
+```
+
+- REQUEST EXAMPLE
+```
+GET /agent/agent_mgmt/list?active_yn=1&is_just_admin=1&ext_agent_ids[]=100014&ext_agent_ids[]=100033 HTTP/1.1
+auth-token: 0oMS=
+```
+
+- RESPONSE EXAMPLE
+```
+{
+    "request_id": "81be6aeeb263065b3e47f1de03847b8f",
+    "error_code": 0,
+    "error_msg": "",
+    "timestamp": 1666016950,
+    "data": [
+        {
+            "id": 100033,
+            "active_yn": 1,
+            "team_id": 10000,
+            "agent_group_id": 1,
+            "cellphone": "18962176133",
+            "login_pass": null,
+            "work_name": "Gujin",
+            "agent_title": "实习",
+            "agent_role": 1,
+            "fuid_wx": "o7SOi50yGret9Q7M-GdTt2NohrmM",
+            "wechat_id": "",
+            "qq_number": "",
+            "visit_notice_mode": 0,
+            "boot_step_version": "2.0",
+            "email": null,
+            "nickname": "Gujin",
+            "bound_face_count": 0
+        },
+        {
+            "id": 100228,
+            "active_yn": 1,
+            "team_id": 10000,
+            "agent_group_id": 31,
+            "cellphone": "15920089431",
+            "login_pass": null,
+            "work_name": "辛集芳",
+            "agent_title": "店长",
+            "agent_role": 9,
+            "fuid_wx": "o7SOi5zK3x6FA_i-HQggilbqd6D0",
+            "wechat_id": "carriexin",
+            "qq_number": "1146296644",
+            "visit_notice_mode": 0,
+            "boot_step_version": "2.0",
+            "email": null,
+            "nickname": "小暴",
+            "bound_face_count": 1
+        },
+        ...
+    ]
+}
+```
+
+
+## [agentTree] - 取分组式树形列表
+
+- PARAMETER
+```
+active_yn - optional, bool, , 是否筛选在职的. 
+```
+
+- REQUEST EXAMPLE
+```
+GET /agent/agent_mgmt/tree_list?active_yn=1 HTTP/1.1
+auth-token: 0oMSfUk=
+```
+
+- RESPONSE EXAMPLE
+```
+{
+    "request_id": "e8c344bf2712c71c79d79a8866be7c55",
+    "error_code": 0,
+    "error_msg": "",
+    "timestamp": 1666017732,
+    "data": [
+        {
+            "id": 31,
+            "team_id": 10000,
+            "group_name": "研发组",
+            "enable_yn": 1,
+            "create_dt": "2020-09-09 19:58:20",
+            "agent_list": [
+                {
+                    "id": 100228,
+                    "active_yn": 1,
+                    "team_id": 10000,
+                    "agent_group_id": 31,
+                    "cellphone": "15920089431",
+                    "login_pass": null,
+                    "work_name": "辛集芳",
+                    "agent_title": "店长",
+                    "agent_role": 9,
+                    "fuid_wx": "o7SOi5zK3x6FA_i-HQggilbqd6D0",
+                    "wechat_id": "carriexin",
+                    "qq_number": "1146296644",
+                    "visit_notice_mode": 0,
+                    "boot_step_version": "2.0",
+                    "email": null,
+                    "nickname": "小暴",
+                    "bound_face_count": 1
+                },
+            ],
+            "total_agent": 2
+        },
+        {
+            "id": 1,
+            "team_id": 0,
+            "group_name": "默认组",
+            "enable_yn": 1,
+            "create_dt": "2020-07-07 16:26:40",
+            "agent_list": [
+                {
+                    "id": 100000,
+                    "active_yn": 1,
+                    "team_id": 10000,
+                    "agent_group_id": 1,
+                    "cellphone": "13115661115",
+                    "login_pass": null,
+                    "work_name": "张小红",
+                    "agent_title": "经理",
+                    "agent_role": 2,
+                    "fuid_wx": null,
+                    "wechat_id": "",
+                    "qq_number": "272000843",
+                    "visit_notice_mode": 0,
+                    "boot_step_version": "2.0",
+                    "email": "red@sideai.com",
+                    "nickname": null,
+                    "bound_face_count": 0
+                },
+            ],
+            "total_agent": 11
+        }
+    ]
+}
+```
+
+
+## [agentInfo] - 取员工信息
+
+- PARAMETER
+```
+agent_id - required, int, , 职员ID. 
+```
+
+- REQUEST EXAMPLE
+```
+GET /agent/agent_mgmt/info?agent_id=100004 HTTP/1.1
+auth-token: 0oMSfUkmY=
+```
+
+- RESPONSE EXAMPLE
+```
+{
+    "request_id": "20ef8ba83a9a2e6fd560937ba2452ca1",
+    "error_code": 0,
+    "error_msg": "",
+    "timestamp": 1666018222,
+    "data": {
+        "id": 100004,
+        "active_yn": 0,
+        "team_id": 10000,
+        "agent_group_id": 1,
+        "cellphone": "18127449025#100004",
+        "login_pass": null,
+        "work_name": "测试员",
+        "agent_title": "",
+        "agent_role": 1,
+        "fuid_wx": "otDUa0yS7LHaJn5zdPNqTR3MCXh0",
+        "wechat_id": "tester_008",
+        "qq_number": null,
+        "visit_notice_mode": 0,
+        "boot_step_version": "",
+        "email": null,
+        "team_info": {
+            "id": 10000,
+            "active_yn": 1,
+            "system_name": "思得智能",
+            "system_logo": "https://cdn.sideai.com/sidefs/upload/10000/100002/c5e74a940b01876dd6e6e36aa6af6e65.png",
+            "team_fullname": "思得智能研发团队",
+            "team_nickname": "思得研发",
+            "team_intro": "思得智能研发团队",
+            "geolocation_id": 423,
+            "owner_cellphone": "15920089431",
+            "owner_fullname": "辛集芳",
+            "expire_dt": "2030-01-01 00:00:00",
+            "face_group_id": 100020,
+            "traffic_significant_time": 5,
+            "agent_limit": 99,
+            "team_class": "F",
+            "default_visit_notice_mode": 1,
+            "default_visit_notice_cooldown": 30,
+            "lead_budget_mode": 2,
+            "lead_remark_mode": 1,
+            "lead_vendor_mode": 1,
+            "lead_cellphone_mode": 1,
+            "lead_wechat_id_mode": 1,
+            "lead_id_name_mode": 0,
+            "lead_id_number_mode": 0,
+            "remind_follow_up_yn": 1,
+            "remind_sales_daily_yn": 1,
+            "remind_manager_daily_yn": 1,
+            "remind_manager_weekly_yn": 0,
+            "stage_id_deposite": 2,
+            "stage_id_full_payment": 3
+        },
+        "group_info": {
+            "id": 1,
+            "team_id": 0,
+            "group_name": "默认组",
+            "enable_yn": 1,
+            "create_dt": "2020-07-07 16:26:40"
+        }
+    }
+}
+```
+
+
+## [agentAdd] - 添加员工
+
+- PARAMETER
+```
+cellphone - required, string, , 电话. 
+login_pass - optional, string, , 登录密码. 
+work_name - required, string, , 工作称呼. 
+agent_role - optional, int, , 员工角色, {'1'：普通员工, '2'：管理, '9'：BOSS}. 
+real_name - optional, string, , 员工真名. 
+wechat_id - optional, string, , 微信号. 
+qq_number - optional, string, , QQ号. 
+email - optional, string, , 邮箱号. 
+agent_title - optional, string, , 职称. 
+visit_notice_mode - optional, int, , 到访提醒类型. 
+```
+
+- REQUEST EXAMPLE
+```
+POST /agent/agent_mgmt/add HTTP/1.1
+auth-token: 0oMSfU=
+Content-Type: application/x-www-form-urlencoded
+
+agent_group_id=2&cellphone=18685166871&login_pass=123456&work_name=%E6%9C%88%E6%9C%88&agent_role=1&real_name=%E6%9C%88%E6%9C%88&wechat_id=idrunk&qq_number=124137924&email=yue1%40yue.com&agent_title=%E5%89%8D%E7%AB%AF%E7%A0%94%E5%8F%91&visit_notice_mode=2
+```
+
+- RESPONSE EXAMPLE
+```
+{
+    "request_id": "d2989b9c17b97c1acc82ff5d76b0d3ce",
+    "error_code": 0,
+    "error_msg": "",
+    "timestamp": 1666019123,
+    "data": {
+        "agent_id": "101569"
+    }
+}
+```
+
+
+## [agentEdit] - 编辑员工
+
+- PARAMETER
+```
+cellphone - optional, string, , 电话. 
+login_pass - optional, string, , 登录密码. 
+work_name - optional, string, , 工作称呼. 
+agent_role - optional, int, , 员工角色, {'1'：普通员工, '2'：管理, '9'：BOSS}. 
+real_name - optional, string, , 员工真名. 
+wechat_id - optional, string, , 微信号. 
+qq_number - optional, string, , QQ号. 
+email - optional, string, , 邮箱号. 
+agent_title - optional, string, , 职称. 
+visit_notice_mode - optional, int, , 到访提醒类型. 
+```
+
+- REQUEST EXAMPLE
+```
+POST /agent/agent_mgmt/edit HTTP/1.1
+auth-token: 0oMSfUkmYmRGZQ51XeRUN3MDlZTZ1QmM0QGOwMjZhDMwATM6k2OiQWaf1W7MDMwADMxoTa7ICZpO3AzN2YTMQ51XeRUfYlRnI6cjOztnOyoTYFjN0QjZ2ADZ4QjMyM9FduV2ZhJiO4ozc7AYmU=
+Content-Type: application/x-www-form-urlencoded
+
+agent_group_id=2&cellphone=18507989520&login_pass=123456&work_name=%E8%AE%B8%E5%B0%8F%E6%9D%A5&agent_id=100006
+```
+
+- RESPONSE EXAMPLE
+```
+{
+    "request_id": "f6015d43b1d3732ab05341abe5c58be3",
+    "error_code": 0,
+    "error_msg": "",
+    "timestamp": 1666020663,
+    "data": true
+}
+```
+
+
+## [agentLeave] - 员工离职
+
+- PARAMETER
+```
+agent_id - required, int, , 离职员工ID. 
+```
+
+- REQUEST EXAMPLE
+```
+POST /agent/agent_mgmt/leave HTTP/1.1
+auth-token: 0oMSfU=
+Content-Type: application/x-www-form-urlencoded
+
+agent_id=101570
+```
+
+- RESPONSE EXAMPLE
+```
+{
+    "request_id": "da3eac5b0a56939c2a9dec6ab6a019aa",
+    "error_code": 0,
+    "error_msg": "",
+    "timestamp": 1666020930,
+    "data": true
+}
+```
+
+
+## [transferOwner] - 转让店长
+
+- PARAMETER
+```
+agent_id - required, int, , 新店长员工ID. 
+verify_id - required, int, , 验证ID. 
+verify_code - required, string, , 验证码. 
+target_role - required, int, , 原店长将降为的角色. 
+```
+
+- REQUEST EXAMPLE
+```
+POST /agent/agent_mgmt/transfer_owner HTTP/1.1
+auth-token: 0oMSf=
+Content-Type: application/x-www-form-urlencoded
+
+agent_id=100033&verify_id=0&verify_code=000000&target_role=1
+```
+
+- RESPONSE EXAMPLE
+```
+{
+    "error_code": 7300,
+    "error_msg": "No Owner Role",
+    "timestamp": 1666021049,
+    "data": []
+}
+```
+
