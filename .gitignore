@@ -1,3 +1,4 @@
 *.php
 *.log
 *.rdb
+*.env

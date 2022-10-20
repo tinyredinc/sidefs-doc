@@ -9,7 +9,7 @@ services:
       TZ: Asia/Shanghai
     volumes:
       - "./app/config.php:/var/app/config.php"
-      - "F:\\App\\red\\sidefs-be:/var/app/backend"
+      - "E:\\App\\Work\\sidefs-be:/var/app/backend"
     working_dir: /var/app/backend
     networks:
       - app
