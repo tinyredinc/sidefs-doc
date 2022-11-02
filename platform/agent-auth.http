@@ -21,7 +21,7 @@ expire_day - optional, int, 14, 密匙有效天数.
 }
 */
 {{@response
-  exports.pltToken = JSON.parse(response.body).data.auth_token;
+  exports.pltToken = JSON.parse(response.body || "").data?.auth_token;
 }}
 POST {{pltHost}}/agent/auth/auth_by_password HTTP/1.1
 Content-Type: application/json
@@ -32,6 +32,40 @@ Content-Type: application/json
   "expire_day": 14
 }
 
+
+### authByVerifyCode
+# @title 验证码登录
+/*
+- PARAMETER
+```
+verify_id - required, string, 验证码ID. 
+account - required, string, 验证账号（电话或邮箱）. 
+verify_code - required, string, 验证码. 
+expire_day - optional, int, 14, 密匙有效天数. 
+```
+
+- RESPONSE EXAMPLE
+```
+{
+  "request_id": "7e761e808d0463fb29e2ea1988d88019",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1665916827,
+  "data": {
+    "auth_token": "rhdd="
+  }
+}
+```
+*/
+POST {{pltHost}}/agent/auth/auth_by_verify_code HTTP/1.1
+Content-Type: application/json
+
+{
+  "verify_id": 2650,
+  "account": "{{pltAccount}}",
+  "verify_code": "723092",
+  "expire_day": 14
+}
 
 ### loggedInfo
 # @title 取登录者信息

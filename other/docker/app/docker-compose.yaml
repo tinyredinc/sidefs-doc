@@ -9,7 +9,7 @@ services:
       TZ: Asia/Shanghai
     volumes:
       - "./app/config.php:/var/app/config.php"
-      - "E:\\App\\Work\\sidefs-be:/var/app/backend"
+      - "F:\\App\\red\\sidefs-be:/var/app/backend"
     working_dir: /var/app/backend
     networks:
       - app
@@ -23,7 +23,6 @@ services:
       - '5000:5000'
     volumes:
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/data:/var/log/nginx
     networks:
       - app
   redis:
