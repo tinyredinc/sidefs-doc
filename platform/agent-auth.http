@@ -1,3 +1,12 @@
+{{+after
+  if (! /auth\/auth/i.test(request.url)) return;
+  let resp = null;
+  try{
+    resp = JSON.parse(response.body);
+  } catch (e) {}
+  exports.pltToken = resp?.data?.auth_token;
+}}
+
 ### authByPassword
 # @title 密码登录
 /*
@@ -20,9 +29,6 @@ expire_day - optional, int, 14, 密匙有效天数.
   }
 }
 */
-{{@response
-  exports.pltToken = JSON.parse(response.body || "").data?.auth_token;
-}}
 POST {{pltHost}}/agent/auth/auth_by_password HTTP/1.1
 Content-Type: application/json
 
@@ -87,7 +93,7 @@ none
     "active_yn": 1,
     "team_id": 10000,
     "agent_group_id": 1,
-    "cellphone": "18681161386",
+    "cellphone": "+8618666666666",
     "login_pass": "$2y$05$CZcqYipkhfcnWQ1w4u0HrOHXvlu3UZ1ZYqlGLThtFu1yPwo9GFm4O",
     "work_name": "谭小文",
     "agent_title": "销售",
@@ -108,7 +114,7 @@ none
       "team_nickname": "思得研发",
       "team_intro": "思得智能研发团队",
       "geolocation_id": 423,
-      "owner_cellphone": "15920089431",
+      "owner_cellphone": "+8618888888888",
       "owner_fullname": "辛集芳",
       "expire_dt": "2030-01-01 00:00:00",
       "face_group_id": 100020,
@@ -138,7 +144,7 @@ none
       "active_yn": 1,
       "team_id": 10000,
       "agent_group_id": 31,
-      "cellphone": "15920089431",
+      "cellphone": "+8618888888888",
       "login_pass": null,
       "work_name": "辛集芳",
       "agent_title": "店长",
@@ -181,7 +187,7 @@ none
       "union_desc": "此数据联盟由思得智能产品研发团队建立，仅作为开发调试、功能演示等非商业生产类用途。",
       "enable_yn": 1,
       "owner_fullname": "张小红",
-      "owner_cellphone": "18127449025",
+      "owner_cellphone": "+8618888888888",
       "expire_dt": "2030-12-08 20:50:57",
       "create_dt": "2020-12-08 20:50:57",
       "update_dt": "2020-12-08 20:51:06"

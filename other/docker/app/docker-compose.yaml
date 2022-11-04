@@ -9,10 +9,12 @@ services:
       TZ: Asia/Shanghai
     volumes:
       - "./app/config.php:/var/app/config.php"
-      - "F:\\App\\red\\sidefs-be:/var/app/backend"
+      - "${PROJECT_PATH}:/var/app/backend"
     working_dir: /var/app/backend
+    dns:
+      - ${DNS-8.8.8.8}
     networks:
-      - app
+      - sidefs
   nginx:
     restart: always
     container_name: sidefs-nginx
@@ -24,7 +26,7 @@ services:
     volumes:
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
     networks:
-      - app
+      - sidefs
   redis:
     restart: always
     container_name: sidefs-redis
@@ -36,7 +38,7 @@ services:
       - ./redis/data:/data
     command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
     networks:
-      - app
+      - sidefs
 networks:
-  app:
+  sidefs:
     driver: bridge

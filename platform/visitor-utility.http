@@ -1,4 +1,4 @@
-### genVerifyCode
+### genVerifyCode [POST /visitor/utility/gen_verify_code]
 # @title 生成验证码
 /*
 - PARAMETER
@@ -32,7 +32,7 @@ Content-Type: application/json
 }
 
 
-### checkVerifyCode
+### checkVerifyCode [POST /visitor/utility/check_verify_code]
 # @title 校验验证码
 /*
 - PARAMETER
@@ -51,7 +51,7 @@ verify_code - required, string, 验证码.
   "timestamp": 1667408909,
   "data": {
     "id": 2652,
-    "cellphone": "+8618681161386",
+    "cellphone": "+8618888888888",
     "verify_code": 489443,
     "verify_status": 0,
     "expire_dt": "2022-11-03 01:17:28",
@@ -71,7 +71,7 @@ Content-Type: application/json
 }
 
 
-### checkPhoneExist
+### checkPhoneExist [GET /visitor/utility/check_account_exist]
 # @title 检查账号是否存在
 /*
 - PARAMETER
@@ -91,10 +91,7 @@ scope - required, set(team,agent,lead), 校验域.
 }
 ```
 */
-POST {{pltHost}}/visitor/utility/check_phone_exist HTTP/1.1
+GET {{pltHost}}/visitor/utility/check_account_exist
+  ?account={{pltAccount}}
+  &scope=agent
 Content-Type: application/json
-
-{
-  "account": "{{pltAccount}}",
-  "scope": "agent"
-}

@@ -1,6 +1,6 @@
 本配置用于快速启动应用服务，利用docker compose可以非常方便的在任意操作系统上启动应用，不论开发还是生产部署。
 
-需要注意的是，启动应用前请先将`config.php`放于app/app目录下，并请修改docker-compose.yaml中的/var/app/backend对应的宿主机路径为你的项目路径。
+需要注意的是，启动应用前请先将`config.php`放于app/app目录下，并请配置环境变量文件`.env`的`PROJECT_PATH`为你的接口项目绝对路径。
 
 官方PHP镜像未安装或启动一些依赖的插件，php/dockerfile用于重构应用安装这些插件，首次执行docker compose up时会自动构建，无需你手动处理，仅需稍作等待。
 
