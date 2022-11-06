@@ -8,10 +8,10 @@ services:
       TZ: Asia/Shanghai
       V2RAY_VMESS_AEAD_FORCED: false
     ports:
-      - '10080-10089:10080-10089'
+      - 10085-10089:10085-10089
     volumes:
       - ./v2ray/server.config.json:/etc/v2ray/config.json:ro
-    command: ["v2ray", "run", "/etc/v2ray/config.json"]
+    command: ["v2ray", "run", "-c", "/etc/v2ray/config.json"]
   nginx:
     restart: always
     container_name: nginx
@@ -19,9 +19,42 @@ services:
     environment:
       TZ: Asia/Shanghai
     ports:
-      - '80:80'
-      - '443:443'
+      - 80:80
+      - 443:443
+      - 10080-10084:10080-10084
     volumes:
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/cert:/var/cert
       - ./nginx/data:/var/log/nginx
+      - ./app:/var/app
+  # php:
+  #   restart: always
+  #   container_name: sidefs-php
+  #   build: ./php
+  #   # image: php:8.1-fpm-alpine
+  #   environment:
+  #     TZ: Asia/Shanghai
+  #   volumes:
+  #     - ./app/config.php:/var/app/config.php
+  #     - ./app/backend:/var/app/backend
+  #   working_dir: /var/app/backend
+  #   dns:
+  #     - 8.8.8.8
+  # mysql:
+  #   restart: always
+  #   container_name: mysql
+  #   image: mysql:8.0
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=uH@QpRXdCMb7tUiDjXcW@W+}}6MiV9ZK
+  #   volumes:
+  #     - ./mysql/data:/var/lib/mysql
+  # redis:
+  #   restart: always
+  #   container_name: sidefs-redis
+  #   image: redis:7.0-alpine
+  #   environment:
+  #     TZ: Asia/Shanghai
+  #   volumes:
+  #     - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf:ro
+  #     - ./redis/data:/data
+  #   command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
