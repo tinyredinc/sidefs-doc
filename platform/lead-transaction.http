@@ -1,0 +1,41 @@
+# @import ./agent-auth.http
+# @ref authByPassword
+
+
+### transactionAdd
+# @title 添加交易
+/*
+- PARAMETER
+lead_id - required, int, , 客户ID. 
+ref_price - optional, float, , 参考价格. 
+paid_price - required, float, , 实付价格. 
+transaction_memo - required, string, , 交易备注. 
+transaction_date - required, date, , 交易日期. 
+transaction_type - optional, int[], , 交易类型. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "67a51e7f6c9a92ae548a4efa73be43f7",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1668248627,
+  "data": {
+    "transaction_id": "4991"
+  }
+}
+*/
+POST {{pltHost}}/agent/lead_transaction/add HTTP/1.1
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{
+   "lead_id":1012168,
+   "ref_price":"",
+   "paid_price":"1000",
+   "transaction_memo":"客户很喜欢这个沙发，付定了",
+   "transaction_date":"2022-11-12",
+   "items_data":[
+      
+   ],
+   "transaction_type":1
+}

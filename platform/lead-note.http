@@ -1,0 +1,38 @@
+# @import ./agent-auth.http
+# @ref authByPassword
+
+
+### noteAdd
+# @title 添加跟进
+/*
+- PARAMETER
+lead_id - required, int, , 客户ID. 
+note_content - required, int, , 跟进内容. 
+note_tag_ids - optional, int[], , 标签ID集. 
+attachments[][id] - optional, int, , 附件ID. 
+attachments[][attachment_type] - optional, set(image, ...), , 附件类型. 
+attachments[][attachment_url] - optional, string, , 附件URL. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "32eb06710d6bcc20b57be08516f33eb4",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1668245823,
+  "data": {
+    "note_id": "14148"
+  }
+}
+*/
+POST {{pltHost}}/agent/lead_note/add HTTP/1.1
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{
+    "lead_id": "1005999",
+    "note_content": "just a test",
+    "note_tag_ids": [
+        136
+    ],
+    "attachments": []
+}
