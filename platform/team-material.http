@@ -1,0 +1,94 @@
+# @import ./agent-auth.http
+# @ref authByPassword
+
+
+### materialList
+# @title 资料列表
+/*
+- PARAMETER
+limit - optional, int, 20, 分页大小. 
+offset - optional, int, 0, 分页偏移数. 
+group_id - optional, int, , 分组ID. 
+lead_id - optional, int, , 客户ID. 
+agent_id - optional, int, , 经纪人ID. 
+keyword - optional, string, , 关键词（for material_name）. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "bac2d96b77d07bfaeacbd20983698db1",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1668880603,
+  "data": {
+    "total_count": 44,
+    "more_data_yn": true,
+    "material_data": [
+      {
+        "id": 522,
+        "team_id": 10000,
+        "agent_id": 100228,
+        "lead_id": 0,
+        "material_name": "欧派.jpg",
+        "material_type": "file",
+        "material_cdn_url": "https://cdn.sideai.com/sidefs/upload/10000/100228/78624e7f49b7af6680363afdccbc0ad6.jpg",
+        "team_material_group_id": 16,
+        "material_size": 95731,
+        "display_yn": 1,
+        "upload_dt": "2020-11-24 17:48:01",
+        "material_size_hu": "93.5 KB",
+        "group_info": {
+          "id": 16,
+          "team_id": 10000,
+          "group_name": "合作合同",
+          "display_yn": 1,
+          "display_order": 9999
+        },
+        "agent_info": {
+          "id": 100228,
+          "active_yn": 1,
+          "team_id": 10000,
+          "agent_group_id": 31,
+          "cellphone": "+8615920089431",
+          "login_pass": null,
+          "work_name": "辛集芳",
+          "agent_title": "店长",
+          "agent_role": 2,
+          "fuid_wx": "o7SOi5zK3x6FA_i-HQggilbqd6D0",
+          "wechat_id": "carriexin",
+          "qq_number": "1146296644",
+          "visit_notice_mode": 0,
+          "boot_step_version": "2.0",
+          "email": null
+        },
+        "lead_info": []
+      }
+    }
+  }
+}
+*/
+POST {{pltHost}}/agent/team_material/list HTTP/1.1
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{}
+
+
+### uploadFile
+# @title 资料上传
+/*
+- PARAMETER
+file - required, File, , 上传文件. 
+
+- RESPONSE EXAMPLE
+
+*/
+POST {{pltHost}}/agent/team_material/upload HTTP/1.1
+Auth-Token: {{pltToken}}
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="usage.png"
+
+< ../env/usage.png
+--WebAppBoundary--
+
