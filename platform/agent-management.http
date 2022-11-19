@@ -268,7 +268,7 @@ POST {{pltHost}}/agent/agent_mgmt/leave HTTP/1.1
 auth-token: {{pltToken}}
 Content-Type: application/json
 
-{"agent_id":101570}
+{"agent_id":100138}
 
 
 ### transferOwner

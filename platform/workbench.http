@@ -1,0 +1,198 @@
+# @import ./agent-auth.http
+# @ref authByPassword
+
+
+### statsOverview
+# @title 数据预览
+/*
+- PARAMETER
+month_period - required, int[1-12], 12, 月份间隔. 
+granularity - required, set(month, week), month, 粒度. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "e0f5fd55b8e0864ebb0a91dae0786066",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1668833707,
+  "data": {
+    "filter": {
+      "month_period": 12,
+      "granularity": "month"
+    },
+    "current": {
+      "current_time_label": "本月",
+      "traffic_count": 0,
+      "lead_create_count": 0,
+      "follow_up_action_count": 4,
+      "conversion_rate": "100.00",
+      "transaction_lead_count": 1,
+      "transaction_count": 2,
+      "transaction_price_avg": "2000.00",
+      "transaction_volume": "2000.00"
+    },
+    "lead_traffic": {
+      "total_volume": 0,
+      "min_volume": 0,
+      "max_volume": 0,
+      "avg_volume": "0.00",
+      "historical_log": [
+        {
+          "label": "2021-12",
+          "range": [
+            "2021-12-01 00:00:00",
+            "2021-12-31 23:59:59"
+          ],
+          "volume": 0,
+          "last_label": "2021-11",
+          "last_volume": 0,
+          "rise_rate": "0.00"
+        }
+      ]
+    },
+    "lead_create": {
+      "total_volume": 0,
+      "min_volume": 0,
+      "max_volume": 0,
+      "avg_volume": "0.00",
+      "historical_log": [
+        {
+          "label": "2021-12",
+          "range": [
+            "2021-12-01 00:00:00",
+            "2021-12-31 23:59:59"
+          ],
+          "volume": 0,
+          "last_label": "2021-11",
+          "last_volume": 0,
+          "rise_rate": "0.00"
+        }
+      ]
+    },
+    "follow_up": {
+      "total_volume": 0,
+      "min_volume": 0,
+      "max_volume": 0,
+      "avg_volume": "0.00",
+      "historical_log": [
+        {
+          "label": "2021-12",
+          "range": [
+            "2021-12-01 00:00:00",
+            "2021-12-31 23:59:59"
+          ],
+          "volume": 0,
+          "last_label": "2021-11",
+          "last_volume": 0,
+          "rise_rate": "0.00"
+        }
+      ]
+    },
+    "conversion": {
+      "total_volume": "0.00",
+      "min_volume": "0.00",
+      "max_volume": 0,
+      "avg_volume": "0.00",
+      "historical_log": [
+        {
+          "label": "2021-12",
+          "range": [
+            "2021-12-01 00:00:00",
+            "2021-12-31 23:59:59"
+          ],
+          "volume": "0.00",
+          "last_label": "2021-11",
+          "last_volume": "0.00",
+          "rise_rate": "0.00"
+        }
+      ]
+    },
+    "transaction_lead": {
+      "total_volume": 0,
+      "min_volume": 0,
+      "max_volume": 0,
+      "avg_volume": "0.00",
+      "historical_log": [
+        {
+          "label": "2021-12",
+          "range": [
+            "2021-12-01 00:00:00",
+            "2021-12-31 23:59:59"
+          ],
+          "volume": 0,
+          "last_label": "2021-11",
+          "last_volume": 0,
+          "rise_rate": "0.00"
+        }
+      ]
+    },
+    "transaction_order": {
+      "total_volume": 0,
+      "min_volume": 0,
+      "max_volume": 0,
+      "avg_volume": "0.00",
+      "historical_log": [
+        {
+          "label": "2021-12",
+          "range": [
+            "2021-12-01 00:00:00",
+            "2021-12-31 23:59:59"
+          ],
+          "volume": 0,
+          "last_label": "2021-11",
+          "last_volume": 0,
+          "rise_rate": "0.00"
+        }
+      ]
+    },
+    "transaction_price_avg": {
+      "total_volume": "0.00",
+      "min_volume": "0.00",
+      "max_volume": 0,
+      "avg_volume": "0.00",
+      "historical_log": [
+        {
+          "label": "2021-12",
+          "range": [
+            "2021-12-01 00:00:00",
+            "2021-12-31 23:59:59"
+          ],
+          "volume": "0.00",
+          "last_label": "2021-11",
+          "last_volume": "0.00",
+          "rise_rate": "0.00"
+        }
+      ]
+    },
+    "transaction_volume": {
+      "total_volume": "0.00",
+      "min_volume": "0.00",
+      "max_volume": 0,
+      "avg_volume": "0.00",
+      "historical_log": [
+        {
+          "label": "2021-12",
+          "range": [
+            "2021-12-01 00:00:00",
+            "2021-12-31 23:59:59"
+          ],
+          "volume": "0.00",
+          "last_label": "2021-11",
+          "last_volume": "0.00",
+          "rise_rate": "0.00"
+        }
+      ]
+    }
+  }
+}
+*/
+POST {{pltHost}}/team/workbench/overview HTTP/1.1
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{
+  "filter": {
+    "month_period": 12,
+    "granularity": "month"
+  }
+}

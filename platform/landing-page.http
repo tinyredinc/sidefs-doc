@@ -1,0 +1,66 @@
+# @import ./agent-auth.http
+# @ref authByPassword
+
+
+### publicDetail
+# @title 分享详情
+/*
+- PARAMETER
+page_key - required, string, , 分享页id. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "8a090e7d5724aa2d4b2f0c2ddedc8763",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1668804792,
+  "data": {
+    "id": 530,
+    "team_id": 10000,
+    "agent_id": 100228,
+    "page_key": "126b9ae27f3cd75e",
+    "page_title": "承德欧派，火？火！-导入",
+    "status_flag": 1,
+    "expire_dt": null,
+    "build_dt": "2020-09-14 19:03:18",
+    "force_wechat_auth_yn": 0,
+    "form_router_mode": 2,
+    "form_router_agent_set": [],
+    "form_field_set": {
+      "fullname": 2,
+      "cellphone": 2,
+      "wechat_id": 0,
+      "lead_budget": 0,
+      "remark": 1
+    },
+    "form_action_slogan": "即刻咨询获取优惠",
+    "form_action_button": "立即咨询",
+    "form_lead_vendor": 1,
+    "form_lead_tag_set": [],
+    "form_enable_yn": 0,
+    "form_return_slogan": "恭喜您成功锁定优惠。您的专属销售顾问会在短期内尝试联系，请保持手机畅通。",
+    "form_return_agent_yn": 1,
+    "view_count": 2,
+    "lead_count": 0,
+    "page_padding": 15,
+    "create_dt": "2020-09-14 19:03:18",
+    "update_dt": "2020-09-18 15:13:09",
+    "page_elements": [
+      {
+        "id": 1890,
+        "landing_page_id": 530,
+        "enable_yn": 1,
+        "element_type": "image",
+        "element_content": "{\"image_url\":\"https://cdn.sideai.com/sidefs/upload/10022/100440/b06c8e380284cbde12c2c612b618b3b7.jpg\"}",
+        "display_order": 1,
+        "create_dt": "2020-09-14 19:03:18",
+        "update_dt": "2020-09-14 19:03:18"
+      }
+    ]
+  }
+}
+*/
+GET {{pltHost}}/team/landing_page/pub_detail
+  ?page_key=126b9ae27f3cd75e&sai=100228 HTTP/1.1
+Auth-Token: {{pltToken}}
+Content-Type: application/json

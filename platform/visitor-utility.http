@@ -92,6 +92,6 @@ scope - required, set(team,agent,lead), 校验域.
 ```
 */
 GET {{pltHost}}/visitor/utility/check_account_exist
-  ?account={{pltAccount}}
+  ?account={{encodeURIComponent(pltAccount)}}
   &scope=agent
 Content-Type: application/json
