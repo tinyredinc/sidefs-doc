@@ -178,7 +178,7 @@ agent_role - optional, int, , 员工角色, {'1'：普通员工, '2'：管理, '
 real_name - optional, string, , 员工真名. 
 wechat_id - optional, string, , 微信号. 
 qq_number - optional, string, , QQ号. 
-email - optional, string, , 邮箱号. 
+email - required, string, , 邮箱号. 
 agent_title - optional, string, , 职称. 
 visit_notice_mode - optional, int, , 到访提醒类型. 
 

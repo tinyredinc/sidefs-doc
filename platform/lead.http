@@ -1,0 +1,349 @@
+# @import ./agent-auth.http
+# @ref authByPassword
+
+
+### searchLeadList
+# @title 客户列表
+/*
+- PARAMETER
+see response search_param part
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "98bff608054ad25263613722731f1441",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1675591501,
+  "data": {
+    "search_param": {
+      "page_num": 1,
+      "page_limit": 20,
+      "order_by": 11,
+      "lead_owner": false,
+      "lead_main_owner": false,
+      "lead_co_owner": false,
+      "lead_id_number": false,
+      "lead_keyword": "",
+      "lead_id_in": [],
+      "lead_stage_in": [],
+      "lead_vendor_in": [],
+      "lead_tag_include": [],
+      "lead_tag_exclude": [],
+      "lead_note_include": "",
+      "active_in_days": 0,
+      "touch_in_days": 0,
+      "visit_in_days": 0,
+      "deal_in_days": 0,
+      "no_active_in_days": 0,
+      "no_touch_in_days": 0,
+      "no_visit_in_days": 0,
+      "no_deal_in_days": 0,
+      "no_reminder_in_days": 0,
+      "reminder_in_days": 0,
+      "last_touch_date_range": [],
+      "last_visit_date_range": [],
+      "last_deal_date_range": [],
+      "lead_create_date_range": [],
+      "lead_budget_min": false,
+      "lead_budget_max": false,
+      "has_face_profile": false,
+      "has_any_contact": false,
+      "has_cellphone": false,
+      "has_wechat_id": false,
+      "has_touch": false,
+      "has_deal": false,
+      "has_deposit": false,
+      "has_full_payment": false,
+      "has_co_owner": false,
+      "lead_search_id": false
+    },
+    "page_num": 1,
+    "page_limit": 20,
+    "page_total": 43,
+    "count_total": 845,
+    "count_return": 20,
+    "more_data_yn": 1,
+    "lead_id_data": [
+      1001288,
+      1000550,
+      1009499,
+      1007072,
+      1026537,
+      1005999,
+      1012168,
+      1024447,
+      1013772,
+      1009161,
+      1018604,
+      1009500,
+      1001764,
+      1005961,
+      1007068,
+      1008221,
+      1013778,
+      1016667,
+      1006745,
+      1020225
+    ],
+    "lead_full_data": [
+      {
+        "id": 1001288,
+        "team_id": 10000,
+        "agent_id": 100003,
+        "co_agent_id": 0,
+        "lead_vendor_id": 1,
+        "lead_stage_id": 9,
+        "stage_update_dt": "2019-11-07 17:35:56",
+        "drop_stage_id": 3,
+        "drop_stage_dt": "2019-07-19 12:03:44",
+        "fullname": "谭大文",
+        "nickname": null,
+        "cellphone": "13944324567",
+        "wechat_id": "",
+        "remark": "测试客户，没问题",
+        "id_name": "",
+        "id_number": "",
+        "lead_budget": 15000,
+        "star_yn": 1,
+        "visit_notice_mode": 1,
+        "visit_notice_cooldown": 60,
+        "last_visit_dt": "2019-12-16 10:17:41",
+        "last_touch_dt": "2019-07-17 17:11:29",
+        "last_transaction_dt": "2019-07-22 10:35:29",
+        "last_action_dt": "2023-02-05 17:48:44",
+        "profile_dt": "2019-07-04 10:47:25",
+        "trash_yn": 0,
+        "email": "hi@idrunk.net",
+        "agent_name": "谭小文",
+        "agent_title": "销售",
+        "agent_role": 9,
+        "agent_cellphone": "+8618681161386",
+        "co_work_name": null,
+        "co_agent_title": null,
+        "co_agent_role": null,
+        "co_agent_cellphone": null,
+        "lead_tag": [
+          {
+            "lead_id": 1001288,
+            "tag_id": 35,
+            "tag_name": "办公区测试客户"
+          }
+        ],
+        "lead_vendor_name": "未知渠道",
+        "detect_img": null,
+        "note_count": 1,
+        "last_note": {
+          "id": 423,
+          "team_id": 10000,
+          "lead_id": 1001288,
+          "agent_id": 100150,
+          "enable_yn": 1,
+          "success_yn": 1,
+          "note_content": "订购2000瓦舞台效果大灯，已支付定金1000元",
+          "note_dt": "2019-07-17 17:11:29",
+          "source_obj": null,
+          "source_id": null,
+          "note_type": 2
+        },
+        "last_visit": {
+          "id": 22888,
+          "team_id": 10000,
+          "lead_id": 1001288,
+          "agent_id": 0,
+          "face_openid": "274442657709686784",
+          "visit_date": "2019-12-16",
+          "visit_start_dt": "2019-12-16 10:17:41",
+          "visit_end_dt": "2019-12-16 14:03:59",
+          "stay_min": 226
+        },
+        "last_deal": {
+          "id": 208,
+          "team_id": 10000,
+          "lead_id": 1001288,
+          "agent_id": 100150,
+          "ops_agent_id": 100150,
+          "transaction_type": 1,
+          "paid_price": "1799.00",
+          "enable_yn": 1,
+          "transaction_memo": "舞台灯的全款",
+          "transaction_dt": "2019-07-22 10:35:29",
+          "transaction_date": null,
+          "ref_price": null
+        },
+        "next_reminder": [],
+        "bound_face_count": 0
+      }
+    ]
+  }
+}
+*/
+POST {{pltHost}}/agent/lead/search HTTP/1.1
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{
+    "search_param": "{\"page_num\":1,\"page_limit\":20,\"lead_stage_in\":[]}"
+}
+
+
+
+### leadInfo
+# @title 取客户信息
+/*
+- PARAMETER
+lead_id - required, int, , 客户ID. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "1bfa7307fc8c19c394997074d456a764",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1675590850,
+  "data": {
+    "id": 1001288,
+    "team_id": 10000,
+    "agent_id": 100003,
+    "co_agent_id": 0,
+    "lead_vendor_id": 1,
+    "lead_stage_id": 9,
+    "stage_update_dt": "2019-11-07 17:35:56",
+    "drop_stage_id": 3,
+    "drop_stage_dt": "2019-07-19 12:03:44",
+    "fuid_wx": null,
+    "fullname": "谭大文",
+    "nickname": null,
+    "cellphone": "13944324567",
+    "wechat_id": "",
+    "remark": "测试客户，没问题",
+    "id_name": "",
+    "id_number": "",
+    "lead_budget": 15000,
+    "star_yn": 1,
+    "visit_notice_mode": 1,
+    "visit_notice_cooldown": 60,
+    "last_visit_dt": "2019-12-16 10:17:41",
+    "last_touch_dt": "2019-07-17 17:11:29",
+    "last_transaction_dt": "2019-07-22 10:35:29",
+    "last_action_dt": "2023-02-05 17:48:44",
+    "profile_dt": "2019-07-04 10:47:25",
+    "trash_yn": 0,
+    "email": "hi@idrunk.net",
+    "first_visit_dt": null,
+    "ext_fields": false,
+    "lead_vendor_name": "未知渠道",
+    "agent_info": {
+      "id": 100003,
+      "active_yn": 1,
+      "team_id": 10000,
+      "agent_group_id": 1,
+      "cellphone": "+8618681161386",
+      "login_pass": "$2y$05$CZcqYipkhfcnWQ1w4u0HrOHXvlu3UZ1ZYqlGLThtFu1yPwo9GFm4O",
+      "work_name": "谭小文",
+      "agent_title": "销售",
+      "agent_role": 9,
+      "fuid_wx": "o7SOi54JJslbABb_MtDCE4hUAjOs",
+      "wechat_id": "",
+      "qq_number": "",
+      "visit_notice_mode": 0,
+      "boot_step_version": "2.0",
+      "email": "hi@idrunk.net"
+    },
+    "co_agent_info": [],
+    "stage_info": {
+      "id": 9,
+      "enable_yn": 1,
+      "team_id": 0,
+      "stage_name": "其他客户",
+      "stage_name_short": "其他",
+      "stage_remark": "不属于销售管道，或不参与销售管道的其他类型客户。",
+      "display_order": 6,
+      "create_dt": "2019-04-17 19:59:55"
+    },
+    "tags_info": [
+      {
+        "id": 35,
+        "enable_yn": 0,
+        "team_id": 10000,
+        "tag_name": "办公区测试客户",
+        "create_dt": "2019-06-15 17:54:09"
+      }
+    ],
+    "stats": {
+      "note_count": 1,
+      "closed_count": 2,
+      "closed_value": "2799.00",
+      "remind_count": 0,
+      "last_reminder_dt": null
+    }
+  }
+}
+*/
+GET {{pltHost}}/agent/lead/info?lead_id=1001288 HTTP/1.1
+auth-token: {{pltToken}}
+
+
+### leadAdd
+# @title 添加客户
+/*
+- PARAMETER
+todo
+
+- RESPONSE EXAMPLE
+{
+    "request_id": "d2989b9c17b97c1acc82ff5d76b0d3ce",
+    "error_code": 0,
+    "error_msg": "",
+    "timestamp": 1666019123,
+    "data": {
+        "agent_id": "101569"
+    }
+}
+*/
+POST {{pltHost}}/agent/lead/add HTTP/1.1
+auth-token: {{pltToken}}
+Content-Type: application/json
+
+{
+    "fullname":"测试客户",
+    "cellphone":"18655554444",
+    "wechat_id":"",
+    "lead_budget":"244455",
+    "remark":"",
+    "lead_vendor_id":1,
+    "id_name":"twe",
+    "id_number":"",
+    "email":"hi@idrunk.net"
+}
+
+
+### leadEdit
+# @title 编辑客户
+/*
+- PARAMETER
+todo
+
+- RESPONSE EXAMPLE
+{
+    "request_id": "f6015d43b1d3732ab05341abe5c58be3",
+    "error_code": 0,
+    "error_msg": "",
+    "timestamp": 1666020663,
+    "data": true
+}
+*/
+POST {{pltHost}}/agent/lead/edit HTTP/1.1
+auth-token: {{pltToken}}
+Content-Type: application/json
+
+{
+    "lead_id":"1001288",
+    "fullname":"谭大文",
+    "cellphone":"13944324567",
+    "wechat_id":"",
+    "lead_budget":15000,
+    "remark":"测试客户，没问题",
+    "lead_vendor_id":1,
+    "id_name":"",
+    "id_number":"",
+    "email":"hi@idrunk.net"
+}
