@@ -1,0 +1,568 @@
+# @import ./agent-auth.http
+# @ref authByPassword
+
+### list
+# @title 列表
+/*
+- PARAMETER
+filter[status_flag] - optional, int, -1, 状态. {-1: 全部, 0: 关闭的, 1: 开启的}
+filter[keyword] - optional, string, , 关键词. 
+filter[agent_id] - optional, string, , 分配人. 
+filter[sort_type] - optional, string, 0, 排序方式. {0: 新到旧, 1: 旧到新, 2: 浏览量逆序, 3: 建档数逆序}
+filter[offset] - optional, int, 0, 偏移量. 
+filter[limit] - optional, int, 20, 页码. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "aab813ad662352be769992e5cfd4e9b0",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1676195893,
+  "data": {
+    "total_count": 2,
+    "more_data_yn": false,
+    "list": [
+      {
+        "id": 1,
+        "team_id": 10000,
+        "allocation_agent_ids": [
+          "100003",
+          "100009"
+        ],
+        "page_key": "b1d66788119b0df6e7eb63d4ac665b39",
+        "page_name": "测试哈",
+        "lead_vendor": 7,
+        "status_flag": 1,
+        "view_count": 0,
+        "lead_count": 0,
+        "create_agent_id": 100003,
+        "create_dt": "2023-02-12 17:54:36",
+        "update_dt": "2023-02-12 17:57:37",
+        "allocation_agents": [ // 指派的客户
+          {
+            "id": 100003,
+            "active_yn": 1,
+            "team_id": 10000,
+            "agent_group_id": 1,
+            "cellphone": "+8616666666666",
+            "login_pass": "$2y$05$CZcqYipkhfcnWQ1w4u0HrOHXvlu3UZ1ZYqlGLThtFu1yPwo9GFm4O",
+            "work_name": "谭小文",
+            "agent_title": "销售",
+            "agent_role": 9,
+            "fuid_wx": "o7SOi54JJslbABb_MtDCE4hUAjOs",
+            "wechat_id": "",
+            "qq_number": "",
+            "visit_notice_mode": 0,
+            "boot_step_version": "2.0",
+            "create_dt": "2019-04-09 15:37:15",
+            "update_dt": "2022-11-19 02:03:18",
+            "email": "hi@idrunk.net"
+          },
+          {
+            "id": 100009,
+            "active_yn": 1,
+            "team_id": 10000,
+            "agent_group_id": 49,
+            "cellphone": "+8616666666666",
+            "login_pass": null,
+            "work_name": "叶小宝",
+            "agent_title": "销售",
+            "agent_role": 2,
+            "fuid_wx": "o7SOi54tiYB5wYVvIm74J8N5_L44",
+            "wechat_id": "",
+            "qq_number": "",
+            "visit_notice_mode": 0,
+            "boot_step_version": "2.0",
+            "create_dt": "2019-04-17 14:36:11",
+            "update_dt": "2022-10-20 17:50:43",
+            "email": null
+          }
+        ],
+        "lead_vendor_info": {
+          "id": 7,
+          "parent_id": 1,
+          "team_id": 10000,
+          "vendor_name": "门店流量",
+          "vendor_remark": "由门店自然流量带来的客户线索。",
+          "vendor_contact": "-",
+          "vendor_cellphone": "-",
+          "enable_yn": 1,
+          "display_order": 10,
+          "create_dt": "2019-05-11 19:39:10",
+          "update_dt": "2019-05-11 19:39:10"
+        },
+        "agent_info": { // 添加者
+          "id": 100003,
+          "active_yn": 1,
+          "team_id": 10000,
+          "agent_group_id": 1,
+          "cellphone": "+8616666666666",
+          "login_pass": "$2y$05$CZcqYipkhfcnWQ1w4u0HrOHXvlu3UZ1ZYqlGLThtFu1yPwo9GFm4O",
+          "work_name": "谭小文",
+          "agent_title": "销售",
+          "agent_role": 9,
+          "fuid_wx": "o7SOi54JJslbABb_MtDCE4hUAjOs",
+          "wechat_id": "",
+          "qq_number": "",
+          "visit_notice_mode": 0,
+          "boot_step_version": "2.0",
+          "create_dt": "2019-04-09 15:37:15",
+          "update_dt": "2022-11-19 02:03:18",
+          "email": "hi@idrunk.net"
+        },
+        "total_access": 0,
+        "total_lead": 0
+      }
+    ]
+  }
+}
+*/
+POST {{pltHost}}/team/landing_page_integration/list
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{
+  "filter": {
+    "status_flag": -1
+  }
+}
+
+
+
+### detail
+# @title 详情
+/*
+- PARAMETER
+page_id - required, int, , 页id. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "f6029216a30f5469c0bc109a32c519ab",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1676196823,
+  "data": {
+    "id": 1,
+    "team_id": 10000,
+    "allocation_agent_ids": [
+      "100003",
+      "100009"
+    ],
+    "page_key": "b1d66788119b0df6e7eb63d4ac665b39",
+    "page_name": "测试哈",
+    "lead_vendor": 7,
+    "status_flag": 1,
+    "view_count": 0,
+    "lead_count": 0,
+    "create_agent_id": 100003,
+    "create_dt": "2023-02-12 17:54:36",
+    "update_dt": "2023-02-12 17:57:37",
+    "allocation_agents": [
+      {
+        "id": 100003,
+        "active_yn": 1,
+        "team_id": 10000,
+        "agent_group_id": 1,
+        "cellphone": "+8618681161386",
+        "login_pass": "$2y$05$CZcqYipkhfcnWQ1w4u0HrOHXvlu3UZ1ZYqlGLThtFu1yPwo9GFm4O",
+        "work_name": "谭小文",
+        "agent_title": "销售",
+        "agent_role": 9,
+        "fuid_wx": "o7SOi54JJslbABb_MtDCE4hUAjOs",
+        "wechat_id": "",
+        "qq_number": "",
+        "visit_notice_mode": 0,
+        "boot_step_version": "2.0",
+        "create_dt": "2019-04-09 15:37:15",
+        "update_dt": "2022-11-19 02:03:18",
+        "email": "hi@idrunk.net"
+      },
+      {
+        "id": 100009,
+        "active_yn": 1,
+        "team_id": 10000,
+        "agent_group_id": 49,
+        "cellphone": "+8618223781723",
+        "login_pass": null,
+        "work_name": "叶小宝",
+        "agent_title": "销售",
+        "agent_role": 2,
+        "fuid_wx": "o7SOi54tiYB5wYVvIm74J8N5_L44",
+        "wechat_id": "",
+        "qq_number": "",
+        "visit_notice_mode": 0,
+        "boot_step_version": "2.0",
+        "create_dt": "2019-04-17 14:36:11",
+        "update_dt": "2022-10-20 17:50:43",
+        "email": null
+      }
+    ],
+    "lead_vendor_info": {
+      "id": 7,
+      "parent_id": 1,
+      "team_id": 10000,
+      "vendor_name": "门店流量",
+      "vendor_remark": "由门店自然流量带来的客户线索。",
+      "vendor_contact": "-",
+      "vendor_cellphone": "-",
+      "enable_yn": 1,
+      "display_order": 10,
+      "create_dt": "2019-05-11 19:39:10",
+      "update_dt": "2019-05-11 19:39:10"
+    },
+    "agent_info": {
+      "id": 100003,
+      "active_yn": 1,
+      "team_id": 10000,
+      "agent_group_id": 1,
+      "cellphone": "+8618681161386",
+      "login_pass": "$2y$05$CZcqYipkhfcnWQ1w4u0HrOHXvlu3UZ1ZYqlGLThtFu1yPwo9GFm4O",
+      "work_name": "谭小文",
+      "agent_title": "销售",
+      "agent_role": 9,
+      "fuid_wx": "o7SOi54JJslbABb_MtDCE4hUAjOs",
+      "wechat_id": "",
+      "qq_number": "",
+      "visit_notice_mode": 0,
+      "boot_step_version": "2.0",
+      "create_dt": "2019-04-09 15:37:15",
+      "update_dt": "2022-11-19 02:03:18",
+      "email": "hi@idrunk.net"
+    },
+    "total_access": 0,
+    "total_lead": 0
+  }
+}
+*/
+GET {{pltHost}}/team/landing_page_integration/detail
+  ?page_id=1 HTTP/1.1
+Auth-Token: {{pltToken}}
+
+
+
+### add
+# @title 添加接口
+/*
+- PARAMETER
+model[page_name] - required, string, , 名称. 
+model[allocation_agent_ids] - required, string int[], , 指派销售ID集. 
+model[lead_vendor] - required, string, , 渠道id. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "08285d28d87884cb1b78bfb6baed1b70",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1676195759,
+  "data": {
+    "page_id": "2"
+  }
+}
+*/
+POST {{pltHost}}/team/landing_page_integration/add
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{
+  "model": {
+    "page_name": "测试2",
+    "allocation_agent_ids": ["100003", "100006"],
+    "lead_vendor": 6
+  }
+}
+
+
+
+### edit
+# @title 编辑
+/*
+- PARAMETER
+page_id - required, string, , 页id. 
+model[page_name] - optional, string, , 名称. 
+model[allocation_agent_ids] - optional, string int[], , 指派销售ID集. 
+model[lead_vendor] - optional, string, , 渠道id. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "55eee03770437df7ddd7d0fe946d7cfd",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1676197207,
+  "data": true
+}
+*/
+POST {{pltHost}}/team/landing_page_integration/edit
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{
+  "page_id": 2,
+  "model": {
+    "page_name": "测试哈2",
+    "allocation_agent_ids": ["100003", "100006"],
+    "lead_vendor": 5
+  }
+}
+
+
+
+### open/close
+# @title 开关
+/*
+- PARAMETER
+page_id - required, string, , 页id. 
+model[status_flag] - required, int, , {0: 关闭, 1: 开启}
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "55eee03770437df7ddd7d0fe946d7cfd",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1676197207,
+  "data": true
+}
+*/
+POST {{pltHost}}/team/landing_page_integration/edit
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{
+  "page_id": 2,
+  "model": {
+    "status_flag": 0
+  }
+}
+
+
+
+### delete
+# @title 删除
+/*
+- PARAMETER
+page_ids - required, int[], , 页id集. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "280e68cca72d2deb1b1720a32f52b1b3",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1676197378,
+  "data": true
+}
+*/
+POST {{pltHost}}/team/landing_page_integration/delete
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{
+  "page_ids": [2]
+}
+
+
+
+### accessStats
+# @title 效果统计
+page_id - required, int, , 指定页ID. 
+filter[date_from] - optional, string, , 筛选起始日期. 
+filter[date_to] - optional, string, , 筛选截至日期. 
+filter[assign_agent_id] - optional, string, , 筛选指定销售. 
+filter[offset] - optional, int, 0, 偏移量. 
+filter[limit] - optional, int, 20, 页码. 
+/*
+- PARAMETER
+page_key - required, string, , 分享页id. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "c6087b6c0614e6b624c9576ceb4034ca",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1676220632,
+  "data": {
+    "access": {
+      "total_access": 2,
+      "more_data_yn": 20,
+      "list": null
+    },
+    "lead": {
+      "total_count": 1,
+      "more_data_yn": false,
+      "list": [
+        {
+          "id": 1,
+          "landing_page_integration_id": 1,
+          "assign_agent_id": 100003,
+          "lead_id": 1026538,
+          "fullname": "anonymous",
+          "cellphone": "+8618888888888",
+          "email": "abc@gmail.com",
+          "remark": "none",
+          "collect_dt": "2023-02-13 00:38:24",
+          "create_dt": "2023-02-13 00:38:24",
+          "work_name": "谭小文"
+        }
+      ],
+      "agent_assigned_list": [
+        {
+          "assign_agent_id": 100003,
+          "total_lead": 1,
+          "work_name": "谭小文"
+        }
+      ]
+    }
+  }
+}
+*/
+POST {{pltHost}}/team/landing_page_integration/access_stats
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{
+  "page_id": 1
+}
+
+
+
+### statsExport
+# @title 导出效果报表
+/*
+- PARAMETER
+page_id - required, int, , 指定页ID. 
+filter[date_from] - optional, string, , 筛选起始日期. 
+filter[date_to] - optional, string, , 筛选截至日期. 
+filter[assign_agent_id] - optional, string, , 筛选指定销售. 
+filter[offset] - optional, int, 0, 偏移量. 
+filter[limit] - optional, int, 20, 页码. 
+
+- RESPONSE EXAMPLE
+
+*/
+POST {{pltHost}}/team/landing_page_integration/stats_export
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{
+  "page_id": 1
+}
+
+
+
+### count
+# @title 浏览统计
+/*
+- PARAMETER
+/{page_key}/count - required, string, , 页接口id键. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "d9c203f31c089e0c363ada9c4da32e98",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1676219218,
+  "data": "2"
+}
+*/
+POST {{pltHost}}/b1d66788119b0df6e7eb63d4ac665b39/count
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{}
+
+
+
+### lead
+# @title 客户留资
+/*
+- PARAMETER
+/{page_key}/count - required, string, , 页接口id键. 
+model[cellphone] - optional, string, , 电话，cellphone与email必填一个. 
+model[email] - optional, string, , 邮箱. 
+model[fullname] - optional, string, , 姓名. 
+model[remark] - optional, string, , 备注. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "4b1feffb37de3e25c388d34b8b0e8a83",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1676219902,
+  "data": {
+    "lead_log_id": "1"
+  }
+}
+*/
+POST {{pltHost}}/b1d66788119b0df6e7eb63d4ac665b39/lead
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{
+  "model": {
+    "cellphone": "+8618888888888",
+    "email": "abc@gmail.com",
+    "fullname": "anonymous",
+    "remark": "none"
+  }
+}
+
+
+
+### dev
+# @title 开发日志
+/*
+- PARAMETER
+/{page_key}/count - required, string, , 页接口id键. 
+filter[date_from] - optional, string, , 筛选起始日期. 
+filter[date_to] - optional, string, , 筛选截至日期. 
+filter[offset] - optional, int, 0, 偏移量. 
+filter[limit] - optional, int, 20, 页码. 
+
+- RESPONSE EXAMPLE
+{
+  "request_id": "a44df978510ec2301575abd2cdbbf0fc",
+  "error_code": 0,
+  "error_msg": "",
+  "timestamp": 1676219995,
+  "data": {
+    "access": {
+      "total_access": 2,
+      "more_data_yn": 20,
+      "list": [
+        {
+          "id": 1,
+          "landing_page_integration_id": 1,
+          "client_ip": "172.22.0.1",
+          "referer": null,
+          "access_dt": "2023-02-13 00:26:02",
+          "create_dt": "2023-02-13 00:26:02"
+        }
+      ]
+    },
+    "lead": {
+      "total_count": 1,
+      "more_data_yn": false,
+      "list": [
+        {
+          "id": 1,
+          "landing_page_integration_id": 1,
+          "assign_agent_id": "***",
+          "fullname": "***",
+          "cellphone": "***",
+          "email": "***",
+          "remark": "***",
+          "collect_dt": "2023-02-13 00:38:24",
+          "create_dt": "2023-02-13 00:38:24"
+        }
+      ]
+    }
+  }
+}
+*/
+POST {{pltHost}}/b1d66788119b0df6e7eb63d4ac665b39/dev
+Auth-Token: {{pltToken}}
+Content-Type: application/json
+
+{
+  "filter": {
+    "limit": 1
+  }
+}
