@@ -362,6 +362,7 @@ Content-Type: application/json
 
 ### accessStats
 # @title 效果统计
+/*
 page_id - required, int, , 指定页ID. 
 filter[date_from] - optional, string, , 筛选起始日期. 
 filter[date_to] - optional, string, , 筛选截至日期. 
@@ -463,7 +464,6 @@ Content-Type: application/json
 }
 */
 POST {{pltHost}}/b1d66788119b0df6e7eb63d4ac665b39/count
-Auth-Token: {{pltToken}}
 Content-Type: application/json
 
 {}
@@ -492,7 +492,6 @@ model[remark] - optional, string, , 备注.
 }
 */
 POST {{pltHost}}/b1d66788119b0df6e7eb63d4ac665b39/lead
-Auth-Token: {{pltToken}}
 Content-Type: application/json
 
 {
@@ -558,7 +557,6 @@ filter[limit] - optional, int, 20, 页码.
 }
 */
 POST {{pltHost}}/b1d66788119b0df6e7eb63d4ac665b39/dev
-Auth-Token: {{pltToken}}
 Content-Type: application/json
 
 {
