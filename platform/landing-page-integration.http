@@ -479,6 +479,9 @@ model[cellphone] - optional, string, , 电话，cellphone与email必填一个.
 model[email] - optional, string, , 邮箱. 
 model[fullname] - optional, string, , 姓名. 
 model[remark] - optional, string, , 备注. 
+model[input_tags] - optional, string[], , 用户自定义标签. 
+model[ext_fields][][field_name] - optional, string, , 扩展属性名. 
+model[ext_fields][][field_value] - optional, string, , 扩展属性值. 
 
 - RESPONSE EXAMPLE
 {
@@ -496,10 +499,15 @@ Content-Type: application/json
 
 {
   "model": {
-    "cellphone": "+8618888888888",
-    "email": "abc@gmail.com",
+    "cellphone": "+8618888888878",
+    "email": "abc2@gmail.com",
     "fullname": "anonymous",
-    "remark": "none"
+    "remark": "none",
+    "input_tags": ["tag1", "Tag 2"],
+    "ext_fields": [
+      {"field_name": "扩展1", "field_value": "值1"},
+      {"field_name": "prop2", "field_value": "value2"}
+    ]
   }
 }
 
